@@ -1,13 +1,13 @@
 using System;
 
-public class mainJob
+public class Job
 {
     public string _JobTitle;
     public string _Company;
     public int _StartYear;
     public int _EndYear;
 
-    public mainJob(string jobTitle, string company, int startYear, int endYear)
+    public Job(string jobTitle, string company, int startYear, int endYear)
     {
         _JobTitle = jobTitle;
         _Company = company;
