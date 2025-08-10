@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 public class Activity
@@ -8,50 +7,58 @@ public class Activity
     protected string _description;
     protected int _duration;
 
+    // Encouragement messages for exceeding requirements
+    private string[] _encouragements = new string[]
+    {
+        "Great job! Keep going!",
+        "You’re doing amazing!",
+        "That’s the spirit!",
+        "Keep up the great work!",
+        "Fantastic effort!"
+    };
+
     public Activity(string name, string description)
     {
         _name = name;
         _description = description;
     }
 
-    public void DisplayStartingMessage()
+    public void StartActivity()
     {
-        Console.WriteLine($"Welcome to the {_name}.");
+        Console.Clear();
+        Console.WriteLine($"Welcome to the {_name} Activity.");
         Console.WriteLine(_description);
-        Console.Write("Enter duration in seconds: ");
+        Console.Write("\nEnter duration in seconds: ");
         _duration = int.Parse(Console.ReadLine());
         Console.Clear();
+        Console.WriteLine("Get ready...");
+        ShowSpinner(3);
     }
 
-    public void DisplayEndingMessage()
+    protected void EndActivity()
     {
-        Console.WriteLine("Well done!");
+        Console.WriteLine("\nWell done!");
+        ShowEncouragement(); // <-- Added feature here
+        Console.WriteLine($"You have completed {_duration} seconds of the {_name} activity.");
         ShowSpinner(3);
-        Console.WriteLine($"You completed {_duration} seconds of {_name}.");
-        ShowSpinner(3);
-        Console.Clear();
     }
 
-    public void ShowSpinner(int seconds)
+    protected void ShowSpinner(int seconds)
     {
-        List<string> symbols = new List<string>() { "|", "/", "-", "\\" };
+        string[] spinner = { "|", "/", "-", "\\" };
         DateTime endTime = DateTime.Now.AddSeconds(seconds);
         int i = 0;
 
         while (DateTime.Now < endTime)
         {
-            Console.Write(symbols[i]);
-            Thread.Sleep(200);
+            Console.Write(spinner[i]);
+            Thread.Sleep(300);
             Console.Write("\b \b");
-            i++;
-            if (i >= symbols.Count)
-            {
-                i = 0;
-            }
+            i = (i + 1) % spinner.Length;
         }
     }
 
-    public void ShowCountDown(int seconds)
+    protected void ShowCountdown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
@@ -59,5 +66,12 @@ public class Activity
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
+    }
+
+    private void ShowEncouragement()
+    {
+        Random random = new Random();
+        int index = random.Next(_encouragements.Length);
+        Console.WriteLine(_encouragements[index]);
     }
 }

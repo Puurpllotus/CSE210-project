@@ -1,28 +1,23 @@
 using System;
+using System.Threading;
 
 public class BreathingActivity : Activity
 {
-    public BreathingActivity() 
-        : base("Breathing Activity", "This activity will help you relax by guiding you through slow breathing.")
-    {
-    }
+    public BreathingActivity(string name, string description) : base(name, description) { }
 
     public void Run()
     {
-        DisplayStartingMessage();
-
+        StartActivity();
         DateTime endTime = DateTime.Now.AddSeconds(_duration);
+
         while (DateTime.Now < endTime)
         {
-            Console.Write("Breathe in... ");
-            ShowCountDown(4);
-            Console.WriteLine();
-
-            Console.Write("Breathe out... ");
-            ShowCountDown(6);
-            Console.WriteLine();
+            Console.Write("\nBreathe in... ");
+            ShowCountdown(4);
+            Console.Write("Now breathe out... ");
+            ShowCountdown(4);
         }
 
-        DisplayEndingMessage();
+        EndActivity();
     }
 }
