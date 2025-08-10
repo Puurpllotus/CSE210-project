@@ -68,7 +68,7 @@ public class Activity
         }
     }
 
-    private void ShowEncouragement()
+    private void ShowEncouragement() // New method to show encouragement messages
     {
         Random random = new Random();
         int index = random.Next(_encouragements.Length);
