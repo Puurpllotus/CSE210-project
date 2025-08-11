@@ -10,6 +10,7 @@ public class Rectangle : Shape
         _length = length;
         _width = width;
     }
+    
 
     public override double GetArea()
     {
