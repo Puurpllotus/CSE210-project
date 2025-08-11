@@ -1,0 +1,5 @@
+0
+SimpleGoal|Ride a bicycle|look for a bicycle and ride|20|False|fitness
+SimpleGoal|cook dinner|make dinner for everybody to eat|30|False|1
+ChecklistGoal|bucketlist|do 3 things on my bucketlist|50|30|2|0|2
+EternalGoal|go to the temple|visit the temple and do ordinances|100|2
