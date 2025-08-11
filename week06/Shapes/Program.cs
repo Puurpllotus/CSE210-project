@@ -20,7 +20,7 @@ class Program
         // Step 2: Store shapes in a List<Shape>
         List<Shape> shapes = new List<Shape>();
         shapes.Add(new Square("Yellow", 7));
-        shapes.Add(new Rectangle("Purple", 6, 2));
+        shapes.Add(new Rectangle("Purple", 6, 3));
         shapes.Add(new Circle("Orange", 3));
 
         // Step 3: Iterate through the list
